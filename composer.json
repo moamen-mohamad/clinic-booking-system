@@ -1,0 +1,13 @@
+{
+    "name": "moamen/clinic-booking-system",
+    "description": "Pure PHP clinic appointment booking API",
+    "type": "project",
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
