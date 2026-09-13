@@ -82,6 +82,14 @@ class BookingService
         $dateObject = $this->parseDate($date);
         $time = $this->parseTime($time);
 
+        $today = new DateTimeImmutable('today');
+
+        if ($dateObject < $today) {
+            throw new InvalidArgumentException(
+                'Cannot book an appointment in the past.'
+            );
+        }
+        
         $workingHours = $this->getWorkingHours(
             doctorId: $doctorId,
             date: $dateObject
