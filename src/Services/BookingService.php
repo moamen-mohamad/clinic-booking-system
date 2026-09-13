@@ -82,14 +82,16 @@ class BookingService
         $dateObject = $this->parseDate($date);
         $time = $this->parseTime($time);
 
-        $today = new DateTimeImmutable('today');
+        $now = new DateTimeImmutable();
+        $today = $now->setTime(0, 0, 0);
 
+        // منع الحجز في تاريخ سابق
         if ($dateObject < $today) {
             throw new InvalidArgumentException(
                 'Cannot book an appointment in the past.'
             );
         }
-        
+
         $workingHours = $this->getWorkingHours(
             doctorId: $doctorId,
             date: $dateObject
@@ -108,6 +110,13 @@ class BookingService
         $startTime = new DateTimeImmutable(
             $date . ' ' . $time
         );
+
+        // منع الحجز في وقت سابق من الوقت الحالي
+        if ($startTime <= $now) {
+            throw new InvalidArgumentException(
+                'Cannot book an appointment in the past.'
+            );
+        }
 
         if (!$this->isValidSlot(
             requestedStart: $startTime,
