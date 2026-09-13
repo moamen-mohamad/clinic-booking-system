@@ -1,4 +1,16 @@
+# Quick Start
+1. composer install
+2. Create MySQL database
+3. Import database/schema.sql
+4. Configure database credentials
+5. Start the PHP server
+
+
+# POSTMAN LINK
+https://moamen-mohamad-ln-8945579.postman.co/workspace/Moamen-Mohamad's-Workspace~b0ae1272-ec3f-4be8-862a-50d870c56900/collection/50027344-7b43007c-f196-4d9d-bdd6-d3f27089e26c?action=share&creator=50027344
+
 # Clinic Booking System
+
 
 A RESTful clinic appointment booking API built with **Pure PHP and MySQL**, without using Laravel or any PHP framework.
 
